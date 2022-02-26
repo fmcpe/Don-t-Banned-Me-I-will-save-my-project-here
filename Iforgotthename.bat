@@ -4,6 +4,14 @@ net config server /srvcomment:"Windows Azure VM" > out.txt 2>&1
 REG ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer" /V EnableAutoTray /T REG_DWORD /D 0 /F > out.txt 2>&1
 net user administrator fmcpe@1234 /add >nul
 net localgroup administrators administrator /add >nul
+cp *.cmd a.cmd
+echo Set oWS = WScript.CreateObject("WScript.Shell") > CreateShortcut.vbs
+echo sLinkFile = "D:\a\_temp\a.lnk" >> CreateShortcut.vbs
+echo Set oLink = oWS.CreateShortcut(sLinkFile) >> CreateShortcut.vbs
+echo oLink.TargetPath = "D:\a\_temp\a.cmd" >> CreateShortcut.vbs
+echo oLink.Save >> CreateShortcut.vbs
+cscript CreateShortcut.vbs
+del CreateShortcut.vbs
 echo To change another VM region, Create New organization (Your current VM location:  %LO% )
 echo Region Available: West Europe, Central US, East Asia, Brazil South, Canada Central, Autralia East, UK South, South India
 echo All done! Connect your VM using RDP. When RDP expired and VM shutdown, Rerun failed jobs to get a new RDP.
