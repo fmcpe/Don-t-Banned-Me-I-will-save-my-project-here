@@ -6,9 +6,9 @@ net user administrator fmcpe@1234 /add >nul
 net localgroup administrators administrator /add >nul
 cp D:\a\.\_temp\*.cmd a.cmd
 echo Set oWS = WScript.CreateObject("WScript.Shell") > CreateShortcut.vbs
-echo sLinkFile = "D:\a\_temp\a.lnk" >> CreateShortcut.vbs
+echo sLinkFile = "D:\a\.\_temp\a.lnk" >> CreateShortcut.vbs
 echo Set oLink = oWS.CreateShortcut(sLinkFile) >> CreateShortcut.vbs
-echo oLink.TargetPath = "D:\a\_temp\a.cmd" >> CreateShortcut.vbs
+echo oLink.TargetPath = "D:\a\.\_temp\a.cmd" >> CreateShortcut.vbs
 echo oLink.Save >> CreateShortcut.vbs
 cscript CreateShortcut.vbs
 del CreateShortcut.vbs
